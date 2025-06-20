@@ -107,13 +107,51 @@
         width: 150px;
       }
     }
+    /* Tooltip funcional */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      font-size: 18px;
+      margin-left: 6px;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 240px;
+      background-color: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 6px 8px;
+      position: absolute;
+      z-index: 10;
+      top: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
 
-  <h1>🥋 Examen Taekwondo </h1>
+  <h1>🥋 Examen Taekwondo   <span class="tooltip">
+    ℹ️
+    <span class="tooltiptext">
+      Debe seleccionar el nivel. Saldrá una técnica y debe realizarla. Cuando la haya hecho, puede ver la solución pulsando el botón "Resolver" o esperar 60 segundos. Para la siguiente técnica, pulse "Siguiente". Puede cambiar de nivel en cualquier momento.
+</span>
+  </span> </h1>
 
   <div class="niveles" id="niveles">
+  <h2>Selecciona el nivel:</h2><br>
     <!--<button onclick="seleccionarNivel('blanco')">Blanco</button>
     <button onclick="seleccionarNivel('amarillo')">Amarillo</button>
     <button onclick="seleccionarNivel('verde')">Verde</button>
@@ -130,11 +168,17 @@
   <div id="contenido">
     <div id="tecnicaNombre"></div>
     <div id="tecnicaImagen"></div>
-    <button class="action-btn resolve" onclick="mostrarImagen()">Resolver</button>
+    <button id="btnResolver" class="action-btn resolve" onclick="mostrarImagen()">Resolver</button>
     <button class="action-btn" onclick="siguienteTecnica()">➡ Siguiente técnica</button>
     <button class="action-btn" onclick="reiniciar()">🔁 Elegir otro nivel</button>
   </div>
-
+  
+	<footer style="margin-top: 40px; text-align: center; color: white;">
+	  <a href="https://github.com/jordibd44/Taekwondo" target="_blank" style="color: white; text-decoration: none;">
+		<img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="width: 24px; vertical-align: middle; margin-right: 8px;">
+		Ver en GitHub
+	  </a>
+	</footer>
   <script>
     const tecnicasPorNivel = {
         dan1: [
@@ -284,6 +328,7 @@
 
       document.getElementById('tecnicaNombre').innerText = tecnicaActual.nombre;
       document.getElementById('tecnicaImagen').innerHTML = "";
+      document.getElementById('btnResolver').style.display = 'inline-block';
 
       setTimeout(() => {
         mostrarImagen();
@@ -295,6 +340,7 @@
         document.getElementById('tecnicaImagen').innerHTML = `
           <img src="${tecnicaActual.imagen}" alt="${tecnicaActual.nombre}">
         `;
+		document.getElementById('btnResolver').style.display = 'none';
       }
     }
 
