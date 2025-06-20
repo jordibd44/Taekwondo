@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Examen de Taekwondo</title>
+  <style>
+    :root {
+      --primary: #1e88e5;
+      --accent: #4caf50;
+      --bg: #f5f5f5;
+      --text: #333;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .niveles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .niveles button, .action-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .niveles button:hover, .action-btn:hover {
+      background-color: #1565c0;
+    }
+
+    .action-btn.resolve {
+      background-color: var(--accent);
+    }
+
+    .action-btn.resolve:hover {
+      background-color: #388e3c;
+    }
+
+    #contenido {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    #tecnicaNombre {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    #tecnicaImagen img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      .niveles button, .action-btn {
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+      }
+
+      #tecnicaNombre {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🥋 Examen Taekwondo (Federación Española)</h1>
+
+  <div class="niveles" id="niveles">
+    <button onclick="seleccionarNivel('blanco')">Blanco</button>
+    <button onclick="seleccionarNivel('amarillo')">Amarillo</button>
+    <button onclick="seleccionarNivel('verde')">Verde</button>
+    <button onclick="seleccionarNivel('azul')">Azul</button>
+    <button onclick="seleccionarNivel('rojo')">Rojo</button>
+    <button onclick="seleccionarNivel('dan1')">1º Dan</button>
+    <button onclick="seleccionarNivel('dan2')">2º Dan</button>
+    <button onclick="seleccionarNivel('dan3')">3º Dan</button>
+    <button onclick="seleccionarNivel('dan4')">4º Dan</button>
+    <button onclick="seleccionarNivel('dan5')">5º Dan</button>
+  </div>
+
+  <div id="contenido">
+    <div id="tecnicaNombre"></div>
+    <div id="tecnicaImagen"></div>
+    <button class="action-btn resolve" onclick="mostrarImagen()">Resolver</button>
+    <button class="action-btn" onclick="siguienteTecnica()">➡ Siguiente técnica</button>
+    <button class="action-btn" onclick="reiniciar()">🔁 Elegir otro nivel</button>
+  </div>
+
+  <script>
+    const tecnicasPorNivel = {
+      blanco: [
+        { nombre: "Ap Chagi", imagen: "https://via.placeholder.com/400x250?text=Ap+Chagi" },
+        { nombre: "Jireugi", imagen: "https://via.placeholder.com/400x250?text=Jireugi" }
+      ],
+      amarillo: [
+        { nombre: "Makki", imagen: "https://via.placeholder.com/400x250?text=Makki" }
+      ],
+      verde: [
+        { nombre: "Yop Chagi", imagen: "https://via.placeholder.com/400x250?text=Yop+Chagi" }
+      ],
+      azul: [
+        { nombre: "Dwit Chagi", imagen: "https://via.placeholder.com/400x250?text=Dwit+Chagi" }
+      ],
+      rojo: [
+        { nombre: "Huryo Chagi", imagen: "https://via.placeholder.com/400x250?text=Huryo+Chagi" }
+      ],
+      dan1: [
+        { nombre: "Bandae Dollyo Chagi", imagen: "https://via.placeholder.com/400x250?text=Bandae+Dollyo+Chagi" }
+      ],
+      dan2: [
+        { nombre: "Twio Ap Chagi", imagen: "https://via.placeholder.com/400x250?text=Twio+Ap+Chagi" }
+      ],
+      dan3: [
+        { nombre: "Balnal Chigi", imagen: "https://via.placeholder.com/400x250?text=Balnal+Chigi" }
+      ],
+      dan4: [
+        { nombre: "Mireo Chagi", imagen: "https://via.placeholder.com/400x250?text=Mireo+Chagi" }
+      ],
+      dan5: [
+        { nombre: "Bituro Chagi", imagen: "https://via.placeholder.com/400x250?text=Bituro+Chagi" }
+      ]
+    };
+
+    const ordenNiveles = ["blanco", "amarillo", "verde", "azul", "rojo", "dan1", "dan2", "dan3", "dan4", "dan5"];
+    let nivelSeleccionado = null;
+    let tecnicasDisponibles = [];
+    let tecnicaActual = null;
+
+    function seleccionarNivel(nivel) {
+      nivelSeleccionado = nivel;
+      const index = ordenNiveles.indexOf(nivel);
+      tecnicasDisponibles = [];
+      for (let i = 0; i <= index; i++) {
+        tecnicasDisponibles = tecnicasDisponibles.concat(tecnicasPorNivel[ordenNiveles[i]] || []);
+      }
+
+      document.getElementById('niveles').style.display = 'none';
+      document.getElementById('contenido').style.display = 'flex';
+
+      siguienteTecnica();
+    }
+
+    function siguienteTecnica() {
+      const random = Math.floor(Math.random() * tecnicasDisponibles.length);
+      tecnicaActual = tecnicasDisponibles[random];
+
+      document.getElementById('tecnicaNombre').innerText = tecnicaActual.nombre;
+      document.getElementById('tecnicaImagen').innerHTML = "";
+
+      setTimeout(() => {
+        mostrarImagen();
+      }, 5000);
+    }
+
+    function mostrarImagen() {
+      if (tecnicaActual) {
+        document.getElementById('tecnicaImagen').innerHTML = `
+          <img src="${tecnicaActual.imagen}" alt="${tecnicaActual.nombre}">
+        `;
+      }
+    }
+
+    function reiniciar() {
+      document.getElementById('niveles').style.display = 'flex';
+      document.getElementById('contenido').style.display = 'none';
+      tecnicaActual = null;
+      nivelSeleccionado = null;
+      tecnicasDisponibles = [];
+    }
+  </script>
+</body>
+</html>
