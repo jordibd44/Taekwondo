@@ -112,6 +112,7 @@
     <button onclick="seleccionarNivel('dan3')">3º Dan</button>
     <button onclick="seleccionarNivel('dan4')">4º Dan</button>
     <button onclick="seleccionarNivel('dan5')">5º Dan</button>
+    <button onclick="seleccionarNivel('vocabulario')">📚 Vocabulario</button>
   </div>
 
   <div id="contenido">
@@ -227,22 +228,22 @@
             { nombre: "Gechio Santul Maki", imagen: "image/Gechio Santul Maki" },
             { nombre: "Dangkio Dung Chumok Ape Chigui", imagen: "image/Dangkio Dung Chumok Ape Chigui" },
             { nombre: "Hwangso Maki", imagen: "image/Hwangso Maki" },
-            { nombre: "Sonbadak Goduro An Palmok Momtong Bakat Maki", imagen: "image/Sonbadak Goduro An Palmok Momtong Bakat Maki" },
-            { nombre: "Bawi Milgui", imagen: "image/Bawi Milgui" },
-            { nombre: "Gorro Olligui", imagen: "image/Gorro Olligui" },
-            { nombre: "Chetdari Jirugui", imagen: "image/Chetdari Jirugui" }
+            { nombre: "Sonbadak Goduro An Palmok Momtong Bakat Maki", imagen: "image/Sonbadak Goduro An Palmok Momtong Bakat Maki.png" },
+            { nombre: "Bawi Milgui", imagen: "image/Bawi Milgui.png" },
+            { nombre: "Gorro Olligui", imagen: "image/Gorro Olligui.png" },
+            { nombre: "Chetdari Jirugui", imagen: "image/Chetdari Jirugui.png" }
         ],
 
         dan5: [
-            { nombre: "Kumgang Ap Jirugui", imagen: "image/Kumgang Ap Jirugui" },
-            { nombre: "Me Chumok Yop Olgul Piochok Chigui", imagen: "image/Me Chumok Yop Olgul Piochok Chigui" },
-            { nombre: "Nalgue Piogui", imagen: "image/Nalgue Piogui" },
-            { nombre: "Bituro Jansonnal Momtong Bakat Maki", imagen: "image/Bituro Jansonnal Momtong Bakat Maki" },
-            { nombre: "An Palmok Bituro Momtong Bakat Maki", imagen: "image/An Palmok Bituro Momtong Bakat Maki" },
-            { nombre: "Kumgang Yop Jirugui", imagen: "image/Kumgang Yop Jirugui" },
-            { nombre: "Sonnal Oe Santul Maki", imagen: "image/Sonnal Oe Santul Maki" },
-            { nombre: "Taesan Milgui", imagen: "image/Taesan Milgui" },
-            { nombre: "Ban Chumok Sosum Chigui", imagen: "image/Ban Chumok Sosum Chigui" }
+            { nombre: "Kumgang Ap Jirugui", imagen: "image/Kumgang Ap Jirugui.png" },
+            { nombre: "Me Chumok Yop Olgul Piochok Chigui", imagen: "image/Me Chumok Yop Olgul Piochok Chigui.png" },
+            { nombre: "Nalgue Piogui", imagen: "image/Nalgue Piogui.png" },
+            { nombre: "Bituro Jansonnal Momtong Bakat Maki", imagen: "image/Bituro Jansonnal Momtong Bakat Maki.png" },
+            { nombre: "An Palmok Bituro Momtong Bakat Maki", imagen: "image/An Palmok Bituro Momtong Bakat Maki.png" },
+            { nombre: "Kumgang Yop Jirugui", imagen: "image/Kumgang Yop Jirugui.png" },
+            { nombre: "Sonnal Oe Santul Maki", imagen: "image/Sonnal Oe Santul Maki.png" },
+            { nombre: "Taesan Milgui", imagen: "image/Taesan Milgui.png" },
+            { nombre: "Ban Chumok Sosum Chigui", imagen: "image/Ban Chumok Sosum Chigui.png" }
         ]
     };
 
@@ -255,7 +256,7 @@
       nivelSeleccionado = nivel;
       const index = ordenNiveles.indexOf(nivel);
       tecnicasDisponibles = [];
-      for (let i = 0; i <= index; i  ) {
+      for (let i = 0; i <= index; i++) {
         tecnicasDisponibles = tecnicasDisponibles.concat(tecnicasPorNivel[ordenNiveles[i]] || []);
       }
 
