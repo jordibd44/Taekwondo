@@ -1,6 +1,8 @@
 # Proyecto Taekwondo Open Source
 
-Este programa ha sido creado con el propósito de ayudar a la comunidad del Taekwondo, proporcionando información sobre técnicas y niveles Dan.
+Esta Web ha sido creado con el propósito de ayudar a la comunidad del Taekwondo, proporcionando información sobre técnicas y niveles Dan.
+
+Url: https://jordibd44.github.io/Taekwondo/
 
 ## Créditos
 
