@@ -25,7 +25,7 @@
     }
 
     h1 {
-      color: var(--primary);
+      color: var(--text);
       margin-bottom: 20px;
       text-align: center;
     }
@@ -78,8 +78,16 @@
       max-width: 100%;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 300px; /* tamaño base */
+      height: auto; 
     }
 
+    @media (max-width: 900px) {
+      #tecnicaImagen img {
+        width: 200px;
+      }
+    }
+    
     @media (max-width: 600px) {
       h1 {
         font-size: 22px;
@@ -93,6 +101,10 @@
 
       #tecnicaNombre {
         font-size: 20px;
+      }
+      
+      #tecnicaImagen img {
+        width: 150px;
       }
     }
   </style>
@@ -127,107 +139,107 @@
     const tecnicasPorNivel = {
         dan1: [
             // Posiciones
-            { nombre: "Chariot Sogui", imagen: "image/Chariot Sogui" },
-            { nombre: "Moa Sogui", imagen: "image/Moa Sogui" },
-            { nombre: "Naranji Sogui", imagen: "image/Naranji Sogui" },
-            { nombre: "Ap Sogui", imagen: "image/Ap Sogui" },
-            { nombre: "Ap Kubi Sogui", imagen: "image/Ap Kubi Sogui" },
-            { nombre: "Tuit Kubi Sogui", imagen: "image/Tuit Kubi Sogui" },
-            { nombre: "Uen Sogui", imagen: "image/Uen Sogui" },
-            { nombre: "Orun Sogui", imagen: "image/Orun Sogui" },
-            { nombre: "Tuit Koa Sogui", imagen: "image/Tuit Koa Sogui" },
-            { nombre: "Bom Sogui", imagen: "image/Bom Sogui" },
-            { nombre: "Chuchum Sogui", imagen: "image/Chuchum Sogui" },
+            { nombre: "Chariot Sogui", imagen: "image/Chariot Sogui.png" },
+            { nombre: "Moa Sogui", imagen: "image/Moa Sogui.png" },
+            { nombre: "Naranji Sogui", imagen: "image/Naranji Sogui.png" },
+            { nombre: "Ap Sogui", imagen: "image/Ap Sogui.png" },
+            { nombre: "Ap Kubi Sogui", imagen: "image/Ap Kubi Sogui.png" },
+            { nombre: "Tuit Kubi Sogui", imagen: "image/Tuit Kubi Sogui.png" },
+            { nombre: "Uen Sogui", imagen: "image/Uen Sogui.png" },
+            { nombre: "Orun Sogui", imagen: "image/Orun Sogui.png" },
+            { nombre: "Tuit Koa Sogui", imagen: "image/Tuit Koa Sogui.png" },
+            { nombre: "Bom Sogui", imagen: "image/Bom Sogui.png" },
+            { nombre: "Chuchum Sogui", imagen: "image/Chuchum Sogui.png" },
 
             // Bloqueos
-            { nombre: "Are Maki", imagen: "image/Are Maki" },
-            { nombre: "Momtong Maki", imagen: "image/Momtong Maki" },
-            { nombre: "Momtong An Maki", imagen: "image/Momtong An Maki" },
-            { nombre: "Olgul Maki", imagen: "image/Olgul Maki" },
-            { nombre: "Jansonnal Momtong Bakat Maki", imagen: "image/Jansonnal Momtong Bakat Maki" },
-            { nombre: "Sonnal Momtong Maki", imagen: "image/Sonnal Momtong Maki" },
-            { nombre: "Momtong Bakat Maki", imagen: "image/Momtong Bakat Maki" },
-            { nombre: "Olgul Bakat Maki", imagen: "image/Olgul Bakat Maki" },
-            { nombre: "Gechio Are Maki", imagen: "image/Gechio Are Maki" },
-            { nombre: "Batagson Momtong Maki", imagen: "image/Batagson Momtong Maki" },
-            { nombre: "Batagson Momtong An Maki", imagen: "image/Batagson Momtong An Maki" },
-            { nombre: "Sonnal Are Maki", imagen: "image/Sonnal Are Maki" },
-            { nombre: "Goduro Batagson Momtong An Maki", imagen: "image/Goduro Batagson Momtong An Maki" },
-            { nombre: "Gechio Momtong Maki", imagen: "image/Gechio Momtong Maki" },
-            { nombre: "Okgoro Are Maki", imagen: "image/Okgoro Are Maki" },
-            { nombre: "Jan Sonnal Momtong Yop Maki", imagen: "image/Jan Sonnal Momtong Yop Maki" },
-            { nombre: "Goduro Momtong Maki", imagen: "image/Goduro Momtong Maki" },
-            { nombre: "Goduro Are Maki", imagen: "image/Goduro Are Maki" },
+            { nombre: "Are Maki", imagen: "image/Are Maki.png" },
+            { nombre: "Momtong Maki", imagen: "image/Momtong Maki.png" },
+            { nombre: "Momtong An Maki", imagen: "image/Momtong An Maki.png" },
+            { nombre: "Olgul Maki", imagen: "image/Olgul Maki.png" },
+            { nombre: "Jansonnal Momtong Bakat Maki", imagen: "image/Jansonnal Momtong Bakat Maki.png" },
+            { nombre: "Sonnal Momtong Maki", imagen: "image/Sonnal Momtong Maki.png" },
+            { nombre: "Momtong Bakat Maki", imagen: "image/Momtong Bakat Maki.png" },
+            { nombre: "Olgul Bakat Maki", imagen: "image/Olgul Bakat Maki.png" },
+            { nombre: "Gechio Are Maki", imagen: "image/Gechio Are Maki.png" },
+            { nombre: "Batagson Momtong Maki", imagen: "image/Batagson Momtong Maki.png" },
+            { nombre: "Batagson Momtong An Maki", imagen: "image/Batagson Momtong An Maki.png" },
+            { nombre: "Sonnal Are Maki", imagen: "image/Sonnal Are Maki.png" },
+            { nombre: "Goduro Batagson Momtong An Maki", imagen: "image/Goduro Batagson Momtong An Maki.png" },
+            { nombre: "Gechio Momtong Maki", imagen: "image/Gechio Momtong Maki.png" },
+            { nombre: "Okgoro Are Maki", imagen: "image/Okgoro Are Maki.png" },
+            { nombre: "Jan Sonnal Momtong Yop Maki", imagen: "image/Jan Sonnal Momtong Yop Maki.png" },
+            { nombre: "Goduro Momtong Maki", imagen: "image/Goduro Momtong Maki.png" },
+            { nombre: "Goduro Are Maki", imagen: "image/Goduro Are Maki.png" },
 
             // Golpes y técnicas varias
-            { nombre: "Momtong Bande Jirugui", imagen: "image/Momtong Bande Jirugui" },
-            { nombre: "Momtong Baro Jirugui", imagen: "image/Momtong Baro Jirugui" },
-            { nombre: "Olgul Bande Jirugui", imagen: "image/Olgul Bande Jirugui" },
-            { nombre: "Momtong Dubong Jirugui", imagen: "image/Momtong Dubong Jirugui" },
-            { nombre: "Sonnal An Chigui", imagen: "image/Sonnal An Chigui" },
-            { nombre: "Pioson Kut Seuo Chirugui", imagen: "image/Pioson Kut Seuo Chirugui" },
-            { nombre: "Dung Chumok Ape Chigui", imagen: "image/Dung Chumok Ape Chigui" },
-            { nombre: "Me Chumok Neryo Yop Chigui", imagen: "image/Me Chumok Neryo Yop Chigui" },
-            { nombre: "Palkup Dollyo Chigui", imagen: "image/Palkup Dollyo Chigui" },
-            { nombre: "Du Checho Jirugui", imagen: "image/Du Checho Jirugui" },
-            { nombre: "Dung Chumok Bakat Chigui", imagen: "image/Dung Chumok Bakat Chigui" },
-            { nombre: "Yop Jirugui", imagen: "image/Yop Jirugui" },
+            { nombre: "Momtong Bande Jirugui", imagen: "image/Momtong Bande Jirugui.png" },
+            { nombre: "Momtong Baro Jirugui", imagen: "image/Momtong Baro Jirugui.png" },
+            { nombre: "Olgul Bande Jirugui", imagen: "image/Olgul Bande Jirugui.png" },
+            { nombre: "Momtong Dubong Jirugui", imagen: "image/Momtong Dubong Jirugui.png" },
+            { nombre: "Sonnal An Chigui", imagen: "image/Sonnal An Chigui.png" },
+            { nombre: "Pioson Kut Seuo Chirugui", imagen: "image/Pioson Kut Seuo Chirugui.png" },
+            { nombre: "Dung Chumok Ape Chigui", imagen: "image/Dung Chumok Ape Chigui.png" },
+            { nombre: "Me Chumok Neryo Yop Chigui", imagen: "image/Me Chumok Neryo Yop Chigui.png" },
+            { nombre: "Palkup Dollyo Chigui", imagen: "image/Palkup Dollyo Chigui.png" },
+            { nombre: "Du Checho Jirugui", imagen: "image/Du Checho Jirugui.png" },
+            { nombre: "Dung Chumok Bakat Chigui", imagen: "image/Dung Chumok Bakat Chigui.png" },
+            { nombre: "Yop Jirugui", imagen: "image/Yop Jirugui.png" },
 
             // Técnicas especiales
-            { nombre: "Kibon Chumbi", imagen: "image/Kibon Chumbi" },
-            { nombre: "Chebipum Mok Chigui", imagen: "image/Chebipum Mok Chigui" },
-            { nombre: "Momtong Piochok Palkup Chigui", imagen: "image/Momtong Piochok Palkup Chigui" },
-            { nombre: "Bituro Jansonnal Olgul Bakat Maki", imagen: "image/Bituro Jansonnal Olgul Bakat Maki" },
-            { nombre: "Bo Chumok Chumbi", imagen: "image/Bo Chumok Chumbi" },
-            { nombre: "Gawi Maki", imagen: "image/Gawi Maki" },
-            { nombre: "Dubong Gawi Maki", imagen: "image/Gawi Maki" },
-            { nombre: "Dangkio Ollyo Murup Chigui", imagen: "image/Dangkio Ollyo Murup Chigui" },
-            { nombre: "Piochok Chagui", imagen: "image/Piochok Chagui" },
-            { nombre: "Oe Santul Maki", imagen: "image/Oe Santul Maki" },
-            { nombre: "Dangkio Tok Jirugui", imagen: "image/Dangkio Tok Jirugui" }
+            { nombre: "Kibon Chumbi", imagen: "image/Kibon Chumbi.png" },
+            { nombre: "Chebipum Mok Chigui", imagen: "image/Chebipum Mok Chigui.png" },
+            { nombre: "Momtong Piochok Palkup Chigui", imagen: "image/Momtong Piochok Palkup Chigui.png" },
+            { nombre: "Bituro Jansonnal Olgul Bakat Maki", imagen: "image/Bituro Jansonnal Olgul Bakat Maki.png" },
+            { nombre: "Bo Chumok Chumbi", imagen: "image/Bo Chumok Chumbi.png" },
+            { nombre: "Gawi Maki", imagen: "image/Gawi Maki.png" },
+            { nombre: "Dubong Gawi Maki", imagen: "image/Gawi Maki.png" },
+            { nombre: "Dangkio Ollyo Murup Chigui", imagen: "image/Dangkio Ollyo Murup Chigui.png" },
+            { nombre: "Piochok Chagui", imagen: "image/Piochok Chagui.png" },
+            { nombre: "Oe Santul Maki", imagen: "image/Oe Santul Maki.png" },
+            { nombre: "Dangkio Tok Jirugui", imagen: "image/Dangkio Tok Jirugui.png" }
         ],
 
         dan2: [
-            { nombre: "Ap Koa Sogui", imagen: "image/Ap Koa Sogui" },
-            { nombre: "Jansonnal Are Maki", imagen: "image/Jansonnal Are Maki" },
-            { nombre: "An Palmok Gechio Momtong Maki", imagen: "image/An Palmok Gechio Momtong Maki" },
-            { nombre: "Batang Son Nulo Maki", imagen: "image/Batang Son Nulo Maki" },
-            { nombre: "Sonnal Bakat Chigui", imagen: "image/Sonnal Bakat Chigui" },
-            { nombre: "Palkup Yop Chigui", imagen: "image/Palkup Yop Chigui" },
-            { nombre: "Sonnal Mok Chigui", imagen: "image/Sonnal Mok Chigui" },
-            { nombre: "Tong Milgui Chumbi", imagen: "image/Tong Milgui Chumbi" },
-            { nombre: "Akumson Kalchebi", imagen: "image/Akumson Kalchebi" },
-            { nombre: "Murup Koki", imagen: "image/Murup Koki" },
-            { nombre: "Piochok Jirugui", imagen: "image/Piochok Jirugui" },
-            { nombre: "Chagun Dol Chogui", imagen: "image/Chagun Dol Chogui" },
-            { nombre: "Dangkio Are Pionson Kut Checho Chirugui", imagen: "image/Dangkio Are Pionson Kut Checho Chirugui" },
-            { nombre: "Me Chumok Are Piochok Chigui", imagen: "image/Me Chumok Are Piochok Chigui" }
+            { nombre: "Ap Koa Sogui", imagen: "image/Ap Koa Sogui.png" },
+            { nombre: "Jansonnal Are Maki", imagen: "image/Jansonnal Are Maki.png" },
+            { nombre: "An Palmok Gechio Momtong Maki", imagen: "image/An Palmok Gechio Momtong Maki.png" },
+            { nombre: "Batang Son Nulo Maki", imagen: "image/Batang Son Nulo Maki.png" },
+            { nombre: "Sonnal Bakat Chigui", imagen: "image/Sonnal Bakat Chigui.png" },
+            { nombre: "Palkup Yop Chigui", imagen: "image/Palkup Yop Chigui.png" },
+            { nombre: "Sonnal Mok Chigui", imagen: "image/Sonnal Mok Chigui.png" },
+            { nombre: "Tong Milgui Chumbi", imagen: "image/Tong Milgui Chumbi.png" },
+            { nombre: "Akumson Kalchebi", imagen: "image/Akumson Kalchebi.png" },
+            { nombre: "Murup Koki", imagen: "image/Murup Koki.png" },
+            { nombre: "Piochok Jirugui", imagen: "image/Piochok Jirugui.png" },
+            { nombre: "Chagun Dol Chogui", imagen: "image/Chagun Dol Chogui.png" },
+            { nombre: "Dangkio Are Pionson Kut Checho Chirugui", imagen: "image/Dangkio Are Pionson Kut Checho Chirugui.png" },
+            { nombre: "Me Chumok Are Piochok Chigui", imagen: "image/Me Chumok Are Piochok Chigui.png" }
         ],
 
         dan3: [
-            { nombre: "Jakdari Sogui", imagen: "image/Jakdari Sogui" },
-            { nombre: "Jan Sonnal Momtong Maki", imagen: "image/Jan Sonnal Momtong Maki" },
-            { nombre: "Sonnal Gechio Are Maki", imagen: "image/Sonnal Gechio Are Maki" },
-            { nombre: "An Palmok Goduro Olgul Yop Maki", imagen: "image/An Palmok Goduro Olgul Yop Maki" },
-            { nombre: "Sonnal Dung Gechio Momtong Maki", imagen: "image/Sonnal Dung Gechio Momtong Maki" },
-            { nombre: "Goduro Sonnal Dung Momtong Bakat Maki", imagen: "image/Goduro Sonnal Dung Momtong Bakat Maki" },
-            { nombre: "Sonnal Okgoro Are Maki", imagen: "image/Sonnal Okgoro Are Maki" },
-            { nombre: "Palkup Ollyo Chigui", imagen: "image/Palkup Ollyo Chigui" },
-            { nombre: "Pioson Kut Opo Chirugui", imagen: "image/Pioson Kut Opo Chirugui" },
-            { nombre: "Batagson Tok Chigui", imagen: "image/Batagson Tok Chigui" },
-            { nombre: "Kumgang Maki", imagen: "image/Kumgang Maki" },
-            { nombre: "Kun Dol Chogui", imagen: "image/Kun Dol Chogui" },
-            { nombre: "Santul Maki", imagen: "image/Santul Maki" },
-            { nombre: "Kolcho Maki", imagen: "image/Kolcho Maki" },
-            { nombre: "An Palmok Kumgang Momtong Maki", imagen: "image/An Palmok Kumgang Momtong Maki" }
+            { nombre: "Jakdari Sogui", imagen: "image/Jakdari Sogui.png" },
+            { nombre: "Jan Sonnal Momtong Maki", imagen: "image/Jan Sonnal Momtong Maki.png" },
+            { nombre: "Sonnal Gechio Are Maki", imagen: "image/Sonnal Gechio Are Maki.png" },
+            { nombre: "An Palmok Goduro Olgul Yop Maki", imagen: "image/An Palmok Goduro Olgul Yop Maki.png" },
+            { nombre: "Sonnal Dung Gechio Momtong Maki", imagen: "image/Sonnal Dung Gechio Momtong Maki.png" },
+            { nombre: "Goduro Sonnal Dung Momtong Bakat Maki", imagen: "image/Goduro Sonnal Dung Momtong Bakat Maki.png" },
+            { nombre: "Sonnal Okgoro Are Maki", imagen: "image/Sonnal Okgoro Are Maki.png" },
+            { nombre: "Palkup Ollyo Chigui", imagen: "image/Palkup Ollyo Chigui.png" },
+            { nombre: "Pioson Kut Opo Chirugui", imagen: "image/Pioson Kut Opo Chirugui.png" },
+            { nombre: "Batagson Tok Chigui", imagen: "image/Batagson Tok Chigui.png" },
+            { nombre: "Kumgang Maki", imagen: "image/Kumgang Maki.png" },
+            { nombre: "Kun Dol Chogui", imagen: "image/Kun Dol Chogui.png" },
+            { nombre: "Santul Maki", imagen: "image/Santul Maki.png" },
+            { nombre: "Kolcho Maki", imagen: "image/Kolcho Maki.png" },
+            { nombre: "An Palmok Kumgang Momtong Maki", imagen: "image/An Palmok Kumgang Momtong Maki.png" }
         ],
 
         dan4: [
-            { nombre: "Kiopson Chumbi", imagen: "image/Kiopson Chumbi" },
-            { nombre: "Mohe Chigui", imagen: "image/Mohe Chigui" },
-            { nombre: "Gechio Santul Maki", imagen: "image/Gechio Santul Maki" },
-            { nombre: "Dangkio Dung Chumok Ape Chigui", imagen: "image/Dangkio Dung Chumok Ape Chigui" },
-            { nombre: "Hwangso Maki", imagen: "image/Hwangso Maki" },
+            { nombre: "Kiopson Chumbi", imagen: "image/Kiopson Chumbi.png" },
+            { nombre: "Mohe Chigui", imagen: "image/Mohe Chigui.png" },
+            { nombre: "Gechio Santul Maki", imagen: "image/Gechio Santul Maki.png" },
+            { nombre: "Dangkio Dung Chumok Ape Chigui", imagen: "image/Dangkio Dung Chumok Ape Chigui.png" },
+            { nombre: "Hwangso Maki", imagen: "image/Hwangso Maki.png" },
             { nombre: "Sonbadak Goduro An Palmok Momtong Bakat Maki", imagen: "image/Sonbadak Goduro An Palmok Momtong Bakat Maki.png" },
             { nombre: "Bawi Milgui", imagen: "image/Bawi Milgui.png" },
             { nombre: "Gorro Olligui", imagen: "image/Gorro Olligui.png" },
@@ -275,7 +287,7 @@
 
       setTimeout(() => {
         mostrarImagen();
-      }, 5000);
+      }, 60000); // Espera 60 segundos antes de mostrar la imagen
     }
 
     function mostrarImagen() {
