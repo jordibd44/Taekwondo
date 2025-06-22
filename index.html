@@ -300,6 +300,88 @@
             { nombre: "Sonnal Oe Santul Maki", imagen: "image/Sonnal Oe Santul Maki.png" },
             { nombre: "Taesan Milgui", imagen: "image/Taesan Milgui.png" },
             { nombre: "Ban Chumok Sosum Chigui", imagen: "image/Ban Chumok Sosum Chigui.png" }
+        ],
+        vocabulario: [
+          { nombre: "AN", imagen: "Interior" },
+          { nombre: "AP", imagen: "Frontal" },
+          { nombre: "ARE", imagen: "Zona Baja" },
+          { nombre: "BAKAT", imagen: "Exterior" },
+          { nombre: "BANDE", imagen: "Mismo lado pie Adelantado" },
+          { nombre: "BARO", imagen: "Distinto lado pie Adelantado" },
+          { nombre: "BITURO", imagen: "Retorcer" },
+          { nombre: "BO CHUMOK", imagen: "Puño Atesorado" },
+          { nombre: "CHECHO", imagen: "Mirando Arriba" },
+          { nombre: "CHEVIPUM", imagen: "Girar Cadera" },
+          { nombre: "CHIGUI", imagen: "Golpe" },
+          { nombre: "CHIRIGUI", imagen: "Pinchar" },
+          { nombre: "CHUCHUM", imagen: "Posicion Jinete" },
+          { nombre: "DANKIOT", imagen: "Agarrar" },
+          { nombre: "DOLLIO", imagen: "Semicírculo" },
+          { nombre: "DU", imagen: "Doble" },
+          { nombre: "DUNG", imagen: "Parte Superior" },
+          { nombre: "FURIO", imagen: "Círculo" },
+          { nombre: "GAWI", imagen: "Tijeras" },
+          { nombre: "GECHIO", imagen: "Doble Parada" },
+          { nombre: "GODURO", imagen: "Apoyo" },
+          { nombre: "GONG KIOK", imagen: "Ataque" },
+          { nombre: "JIRUGUI", imagen: "Ataque de Puño" },
+          { nombre: "KIBON", imagen: "Fundamental" },
+          { nombre: "KISUL", imagen: "Técnica" },
+          { nombre: "KOA", imagen: "Cruzado" },
+          { nombre: "MAKI", imagen: "Parada" },
+          { nombre: "ME", imagen: "Parte exterior Puño" },
+          { nombre: "MOA", imagen: "Pies Juntos" },
+          { nombre: "MONTONG", imagen: "Zona Media" },
+          { nombre: "NAKO", imagen: "Gancho" },
+          { nombre: "NARANJI", imagen: "Pies Separados Paralelos" },
+          { nombre: "NERIO", imagen: "Descender" },
+          { nombre: "OKGORRO", imagen: "Diana" },
+          { nombre: "OLGUT", imagen: "Zona Alta" },
+          { nombre: "OLLIO", imagen: "Ascendente" },
+          { nombre: "PIOCHOK", imagen: "Diana" },
+          { nombre: "PIONJI", imagen: "Pies Separados" },
+          { nombre: "PUM", imagen: "Movimiento Especial" },
+          { nombre: "PUMSE", imagen: "Formas" },
+          { nombre: "SEUO", imagen: "Vertical" },
+          { nombre: "SOGUI", imagen: "Posición" },
+          { nombre: "TUIO", imagen: "Salto" },
+          { nombre: "TUIT", imagen: "Atrás" },
+          { nombre: "YOP", imagen: "Lateral" },
+          { nombre: "BAL", imagen: "Pie" },
+          { nombre: "BTANGSON", imagen: "Palma de la Mano" },
+          { nombre: "CHUMOK", imagen: "Puño Atesorado" },
+          { nombre: "DARI", imagen: "Pierna" },
+          { nombre: "KUT", imagen: "Dedo" },
+          { nombre: "MOK", imagen: "Cuello" },
+          { nombre: "MOM", imagen: "Cuerpo" },
+          { nombre: "PALKUP", imagen: "Codo" },
+          { nombre: "SONNAL", imagen: "Mano" },
+          { nombre: "MURUP", imagen: "Rodilla" },
+          { nombre: "CHARYOT", imagen: "Firmes" },
+          { nombre: "CHUMBI", imagen: "Preparados" },
+          { nombre: "GUMAN", imagen: "Final" },
+          { nombre: "KALYO", imagen: "Parar" },
+          { nombre: "KESOK", imagen: "Continuar" },
+          { nombre: "KONIEK", imagen: "Saludo" },
+          { nombre: "SIGAN", imagen: "Tiempo Parado" },
+          { nombre: "SIJAK", imagen: "Comenzar" },
+          { nombre: "IL", imagen: "Primero" },
+          { nombre: "I", imagen: "Segundo" },
+          { nombre: "SAM", imagen: "Tercero" },
+          { nombre: "SA", imagen: "Cuarto" },
+          { nombre: "OH", imagen: "Quinto" },
+          { nombre: "YOUK", imagen: "Sexto" },
+          { nombre: "CHILL", imagen: "Séptimo" },
+          { nombre: "PAL", imagen: "Octavo" },
+          { nombre: "CHONG", imagen: "Azul" },
+          { nombre: "HONG", imagen: "Rojo" },
+          { nombre: "SABONIM", imagen: "Maestro" },
+          { nombre: "DO CHANG", imagen: "Sala de Entreno" },
+          { nombre: "DOBOK", imagen: "Traje de Taekwondo" },
+          { nombre: "TI", imagen: "Cinturón" },
+          { nombre: "PAO", imagen: "Saco de Mano" },
+          { nombre: "ORUM", imagen: "Derecha" },
+          { nombre: "UEN", imagen: "Izquierda" }
         ]
     };
 
@@ -310,12 +392,19 @@
 
     function seleccionarNivel(nivel) {
       nivelSeleccionado = nivel;
-      const index = ordenNiveles.indexOf(nivel);
-      tecnicasDisponibles = [];
-      for (let i = 0; i <= index; i++) {
-        tecnicasDisponibles = tecnicasDisponibles.concat(tecnicasPorNivel[ordenNiveles[i]] || []);
+
+      if (nivel === "vocabulario") {
+        // Solo usa las técnicas del vocabulario, sin mezcla
+        tecnicasDisponibles = [...(tecnicasPorNivel["vocabulario"] || [])];
+      } else {
+        // Junta todas las técnicas hasta el nivel seleccionado
+        const index = ordenNiveles.indexOf(nivel);
+        tecnicasDisponibles = [];
+        for (let i = 0; i <= index; i++) {
+          tecnicasDisponibles = tecnicasDisponibles.concat(tecnicasPorNivel[ordenNiveles[i]] || []);
+        }
       }
- 
+
       document.getElementById('niveles').style.display = 'none';
       document.getElementById('contenido').style.display = 'flex';
 
@@ -323,24 +412,43 @@
     }
 
     function siguienteTecnica() {
-      const random = Math.floor(Math.random() * tecnicasDisponibles.length);
-      tecnicaActual = tecnicasDisponibles[random];
+        if (tecnicasDisponibles.length === 0) {
+            alert("¡Has completado todas las técnicas disponibles para este nivel!");
+            reiniciar();
+            return;
+        }
+
+        const random = Math.floor(Math.random() * tecnicasDisponibles.length);
+        tecnicaActual = tecnicasDisponibles[random];
+
+        // Eliminar técnica mostrada para evitar repetición
+        tecnicasDisponibles.splice(random, 1);  
 
       document.getElementById('tecnicaNombre').innerText = tecnicaActual.nombre;
       document.getElementById('tecnicaImagen').innerHTML = "";
       document.getElementById('btnResolver').style.display = 'inline-block';
 
-      setTimeout(() => {
-        mostrarImagen();
-      }, 60000); // Espera 60 segundos antes de mostrar la imagen
+      if (nivelSeleccionado !== "vocabulario") {
+        setTimeout(() => {
+          mostrarImagen();
+        }, 60000); // Espera 60 segundos antes de mostrar la imagen
+      }
+
     }
 
     function mostrarImagen() {
       if (tecnicaActual) {
-        document.getElementById('tecnicaImagen').innerHTML = `
-          <img src="${tecnicaActual.imagen}" alt="${tecnicaActual.nombre}">
-        `;
-		document.getElementById('btnResolver').style.display = 'none';
+        if (nivelSeleccionado === "vocabulario") {
+          document.getElementById('tecnicaImagen').innerHTML = `
+            <p><strong>Traducción:</strong> ${tecnicaActual.imagen}</p>
+          `;
+        } else {
+          document.getElementById('tecnicaImagen').innerHTML = `
+            <img src="${tecnicaActual.imagen}" alt="${tecnicaActual.nombre}">
+          `;
+        }
+
+        document.getElementById('btnResolver').style.display = 'none';
       }
     }
 
