@@ -62,6 +62,12 @@ const tecnicasPorNivel = {
         ],
 
         dan2: [
+            { nombre: "Jan Sonnal Momtong Maki", imagen: "image/Jan Sonnal Momtong Maki.png" },
+            { nombre: "Batagson Tok Chigui", imagen: "image/Batagson Tok Chigui.png" },
+            { nombre: "Kumgang Maki", imagen: "image/Kumgang Maki.png" },
+            { nombre: "Kun Dol Chogui", imagen: "image/Kun Dol Chogui.png" },
+            { nombre: "Santul Maki", imagen: "image/Santul Maki.png" },
+            { nombre: "Jakdari Sogui", imagen: "image/Jakdari Sogui.png" },
             { nombre: "Ap Koa Sogui", imagen: "image/Ap Koa Sogui.png" },
             { nombre: "Jansonnal Are Maki", imagen: "image/Jansonnal Are Maki.png" },
             { nombre: "An Palmok Gechio Momtong Maki", imagen: "image/An Palmok Gechio Momtong Maki.png" },
@@ -79,8 +85,6 @@ const tecnicasPorNivel = {
         ],
 
         dan3: [
-            { nombre: "Jakdari Sogui", imagen: "image/Jakdari Sogui.png" },
-            { nombre: "Jan Sonnal Momtong Maki", imagen: "image/Jan Sonnal Momtong Maki.png" },
             { nombre: "Sonnal Gechio Are Maki", imagen: "image/Sonnal Gechio Are Maki.png" },
             { nombre: "An Palmok Goduro Olgul Yop Maki", imagen: "image/An Palmok Goduro Olgul Yop Maki.png" },
             { nombre: "Sonnal Dung Gechio Momtong Maki", imagen: "image/Sonnal Dung Gechio Momtong Maki.png" },
@@ -88,10 +92,6 @@ const tecnicasPorNivel = {
             { nombre: "Sonnal Okgoro Are Maki", imagen: "image/Sonnal Okgoro Are Maki.png" },
             { nombre: "Palkup Ollyo Chigui", imagen: "image/Palkup Ollyo Chigui.png" },
             { nombre: "Pioson Kut Opo Chirugui", imagen: "image/Pioson Kut Opo Chirugui.png" },
-            { nombre: "Batagson Tok Chigui", imagen: "image/Batagson Tok Chigui.png" },
-            { nombre: "Kumgang Maki", imagen: "image/Kumgang Maki.png" },
-            { nombre: "Kun Dol Chogui", imagen: "image/Kun Dol Chogui.png" },
-            { nombre: "Santul Maki", imagen: "image/Santul Maki.png" },
             { nombre: "Kolcho Maki", imagen: "image/Kolcho Maki.png" },
             { nombre: "An Palmok Kumgang Momtong Maki", imagen: "image/An Palmok Kumgang Momtong Maki.png" }
         ],
