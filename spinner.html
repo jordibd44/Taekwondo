@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🥋 Examen Taekwondo </title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e88e5, #4caf50);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  #rueda {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 8px solid #61dafb;
+    box-shadow: 0 0 20px #61dafbaa;
+    overflow: hidden;
+  }
+
+  #rueda canvas {
+    display: block;
+  }
+
+  #flecha {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid #61dafb;
+  }
+
+  #btn-girar, .button, button {
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: #61dafb;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #282c34;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  #btn-girar:disabled {
+    background: #999;
+    cursor: not-allowed;
+  }
+  #btn-girar:hover:not(:disabled) {
+    background: #21a1f1;
+  }
+
+  #resultado {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    min-height: 30px;
+    color: #61dafb;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>Rueda Aleatoria de Pumses</h1>
+<div id="rueda">
+  <div id="flecha"></div>
+  <canvas id="canvas" width="350" height="350"></canvas>
+</div>
+<button id="btn-girar">Girar</button>
+<div id="resultado"></div>
+<button onclick="window.location.href='index.html'">Menú</button>
+
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  const btnGirar = document.getElementById('btn-girar');
+  const resultado = document.getElementById('resultado');
+
+  let nombres = [
+    'Taeguk Il Jang',    // Cinturón Blanco
+    'Taeguk Yi Jang',    // Cinturón Amarillo
+    'Taeguk Sam Jang',   // Cinturón Verde
+    'Taeguk Sa Jang',    // Cinturón Azul
+    'Taeguk Oh Jang',    // Cinturón Rojo
+    'Taeguk Yuk Jang',   // Cinturón Rojo/Negro
+    'Taeguk Chil Jang',  // Cinturón Negro 1er Dan
+    'Taeguk Pal Jang',   // Cinturón Negro 2º Dan
+    'Koryo',             // Cinturón Negro 3er Dan
+    'Keumgang',          // Cinturón Negro 4º Dan
+    'Taebaek',           // Cinturón Negro 5º Dan
+  ];
+
+
+  let nombresDisponibles = [...nombres]; // Copia para ir quitando nombres
+
+  const colors = [
+    '#e6194b', '#3cb44b', '#ffe119', '#4363d8',
+    '#f58231', '#911eb4', '#46f0f0', '#f032e6',
+    '#bcf60c', '#fabebe'
+  ];
+
+  const tamaño = canvas.width;
+  const radio = tamaño / 2;
+  let anguloActual = 0;
+  let girando = false;
+
+  function dibujarRueda() {
+    const num = nombresDisponibles.length;
+    const anguloPorSeccion = (2 * Math.PI) / num;
+
+    ctx.clearRect(0, 0, tamaño, tamaño);
+
+    for (let i = 0; i < num; i++) {
+      const anguloInicio = anguloPorSeccion * i + anguloActual;
+      const anguloFin = anguloPorSeccion * (i + 1) + anguloActual;
+
+      // Sección color
+      ctx.beginPath();
+      ctx.moveTo(radio, radio);
+      ctx.arc(radio, radio, radio - 10, anguloInicio, anguloFin);
+      ctx.fillStyle = colors[i % colors.length];
+      ctx.fill();
+      ctx.strokeStyle = '#222';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Texto
+      ctx.save();
+      ctx.translate(radio, radio);
+      ctx.rotate(anguloInicio + anguloPorSeccion / 2);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 13px Arial';
+      ctx.fillText(nombresDisponibles[i], radio - 20, 10);
+      ctx.restore();
+    }
+  }
+
+  function girarRueda() {
+    if (girando || nombresDisponibles.length === 0) return;
+
+    girando = true;
+    btnGirar.disabled = true;
+    resultado.textContent = '';
+
+    // Girar entre 3 y 6 vueltas + posición aleatoria
+    const vueltas = Math.floor(Math.random() * 3) + 3;
+    const anguloFinal = (2 * Math.PI * vueltas) + Math.random() * 2 * Math.PI;
+
+    const duracion = 4000; // 4 segundos
+    const start = performance.now();
+
+    function animar(tiempo) {
+      const elapsed = tiempo - start;
+      if (elapsed >= duracion) {
+        anguloActual += anguloFinal - anguloActual;
+        anguloActual %= 2 * Math.PI;
+        dibujarRueda();
+        girando = false;
+
+        // Encontrar el nombre ganador
+        const num = nombresDisponibles.length;
+        const anguloPorSeccion = (2 * Math.PI) / num;
+        // El ángulo cero apunta a la derecha, la flecha está arriba (270°),
+        // así que ajustamos el ángulo para que coincida con la flecha (arriba)
+        const anguloFlecha = (3 * Math.PI / 2 - anguloActual + 2 * Math.PI) % (2 * Math.PI);
+        const indexGanador = Math.floor(anguloFlecha / anguloPorSeccion);
+
+        const ganador = nombresDisponibles[indexGanador];
+        resultado.textContent = `Ganador: ${ganador}`;
+
+        // Quitar el nombre ganador para que no se repita
+        nombresDisponibles.splice(indexGanador, 1);
+
+        if (nombresDisponibles.length === 0) {
+          btnGirar.disabled = true;
+          resultado.textContent += ' - Todos los nombres han sido seleccionados.';
+        } else {
+          btnGirar.disabled = false;
+        }
+
+        return;
+      }
+
+      // Efecto ease out para desacelerar
+      const progreso = elapsed / duracion;
+      const anguloInterpolado = anguloActual + (anguloFinal - anguloActual) * easeOutCubic(progreso);
+      anguloActual = anguloInterpolado % (2 * Math.PI);
+      dibujarRueda();
+      requestAnimationFrame(animar);
+    }
+    requestAnimationFrame(animar);
+  }
+
+  // Función de easing para animación suave
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  dibujarRueda();
+
+  btnGirar.addEventListener('click', girarRueda);
+</script>
+
+</body>
+</html>
