@@ -246,11 +246,11 @@ const tecnicasPorNivel = {
       document.getElementById('tecnicaImagen').innerHTML = "";
       document.getElementById('btnResolver').style.display = 'inline-block';
 
-      if (nivelSeleccionado !== "vocabulario") {
+      /*if (nivelSeleccionado !== "vocabulario") {
         setTimeout(() => {
           mostrarImagen();
         }, 30000); // Espera 30 segundos antes de mostrar la imagen
-      }
+      }*/
 
     }
 
