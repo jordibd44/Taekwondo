@@ -1,4 +1,4 @@
-const tecnicasPorNivel = {
+export const tecnicasPorNivel = {
         dan1: [
             // Posiciones
             { nombre: "Chariot Sogui", imagen: "image/Chariot Sogui.png" },

@@ -1,3 +1,5 @@
+import { tecnicasPorNivel } from "./script.js";
+
 const ordenNiveles = ["blanco", "amarillo", "verde", "azul", "rojo", "dan1", "dan2", "dan3", "dan4", "dan5"];
 const etiquetas = { dan1: "1º Dan", dan2: "2º Dan", dan3: "3º Dan", dan4: "4º Dan", dan5: "5º Dan", vocabulario: "Vocabulario" };
 const TIEMPO_RESOLVER = 30;

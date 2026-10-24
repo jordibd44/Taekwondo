@@ -11,6 +11,25 @@ Url: https://jordibd44.github.io/Taekwondo/
 - Modo estudio con buscador, imágenes WebP y carga diferida.
 - Accesible (teclado, lectores de pantalla) y adaptado a móvil.
 
+## Desarrollo
+
+```bash
+npm install
+npm run dev      # servidor local
+npm run build    # genera dist/
+```
+
+## Docker
+
+```bash
+docker build -t taekwondo .
+docker run -p 8080:80 taekwondo   # http://localhost:8080
+```
+
+## Despliegue
+
+GitHub Pages solo sirve ficheros estáticos (no ejecuta contenedores). El workflow `.github/workflows/deploy.yml` compila con Node y publica `dist/` en cada push a `main`. Activa en el repo: Settings → Pages → Source: **GitHub Actions**.
+
 ## Créditos
 
 - Las técnicas se han tomado de: [FET Taekwondo - Técnicas](https://cms.fetaekwondo.net/assets/9681c6bd-30dc-4e74-b98e-ec040e2a273e)
