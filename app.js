@@ -2,7 +2,6 @@ import { tecnicasPorNivel } from "./script.js";
 
 const ordenNiveles = ["blanco", "amarillo", "verde", "azul", "rojo", "dan1", "dan2", "dan3", "dan4", "dan5"];
 const etiquetas = { dan1: "1º Dan", dan2: "2º Dan", dan3: "3º Dan", dan4: "4º Dan", dan5: "5º Dan", vocabulario: "Vocabulario" };
-const TIEMPO_RESOLVER = 30;
 const CLAVE_STATS = "tkd-stats-v1";
 
 let nivelSeleccionado = null;
@@ -106,20 +105,7 @@ function siguienteTecnica() {
   $("btnSiguiente").hidden = true;
   $("btnResolver").hidden = false;
   $("btnResolver").focus();
-
-  if (nivelSeleccionado === "vocabulario") {
-    $("cuentaAtras").hidden = true;
-    return;
-  }
-
-  let restante = TIEMPO_RESOLVER;
-  $("cuentaAtras").hidden = false;
-  $("cuentaAtras").textContent = `⏱ ${restante}s`;
-  temporizador = setInterval(() => {
-    restante--;
-    $("cuentaAtras").textContent = `⏱ ${restante}s`;
-    if (restante <= 0) mostrarImagen();
-  }, 1000);
+  $("cuentaAtras").hidden = true;
 }
 
 function mostrarImagen() {

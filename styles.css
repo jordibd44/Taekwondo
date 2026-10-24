@@ -95,6 +95,17 @@ button:active { transform: translateY(1px); }
 button.ok { background: var(--ok); }
 button.mal { background: var(--mal); }
 button.secundario { background: #475569; }
+.boton {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  padding: 12px 22px;
+  min-height: 44px;
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+.boton.secundario { background: #475569; }
 button.enlace {
   background: none;
   color: var(--muted);
