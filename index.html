@@ -3,53 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>🥋 Examen Taekwondo   </title>
+  <title>Examen de Taekwondo online: técnicas y vocabulario de 1º a 5º Dan</title>
+  <meta name="description" content="Prepara tu examen de cinturón negro de Taekwondo: practica técnicas aleatorias de 1º a 5º Dan, estudia posiciones, bloqueos y vocabulario coreano, y sigue tu progreso. Gratis.">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="canonical" href="https://jordibd44.github.io/Taekwondo/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Examen de Taekwondo online · 1º a 5º Dan">
+  <meta property="og:description" content="Practica técnicas, aprende vocabulario coreano y sigue tu progreso para el examen de cinturón negro.">
+  <meta property="og:url" content="https://jordibd44.github.io/Taekwondo/">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥋%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Examen Taekwondo","url":"https://jordibd44.github.io/Taekwondo/","applicationCategory":"EducationalApplication","inLanguage":"es","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}
+  </script>
 </head>
 <body>
+  <a class="skip" href="#principal">Saltar al contenido</a>
 
-  <h1>🥋 Examen Taekwondo   <span class="tooltip">
-    ℹ️
-    <span class="tooltiptext">
-      Debe seleccionar el nivel. Saldrá una técnica y debe realizarla. Cuando la haya hecho, puede ver la solución pulsando el botón "Resolver" o esperar 60 segundos. Para la siguiente técnica, pulse "Siguiente". Puede cambiar de nivel en cualquier momento.
-</span>
-  </span> </h1>
+  <header class="hero">
+    <h1>🥋 Examen de Taekwondo</h1>
+    <p class="subtitulo">Practica las técnicas de 1º a 5º Dan y el vocabulario coreano. Tu progreso se guarda en este dispositivo.</p>
+    <details class="ayuda">
+      <summary>¿Cómo funciona?</summary>
+      <p>Elige un nivel. Saldrá una técnica y debes realizarla. Cuando termines, pulsa «Resolver» o espera 30 segundos para ver la solución, y marca si la sabías. Puedes cambiar de nivel en cualquier momento.</p>
+    </details>
+  </header>
 
-  <div class="niveles" id="niveles">
-  <h2>Selecciona el nivel:</h2><br>
-    <!--<button onclick="seleccionarNivel('blanco')">Blanco</button>
-    <button onclick="seleccionarNivel('amarillo')">Amarillo</button>
-    <button onclick="seleccionarNivel('verde')">Verde</button>
-    <button onclick="seleccionarNivel('azul')">Azul</button>
-    <button onclick="seleccionarNivel('rojo')">Rojo</button> -->
-    <button onclick="seleccionarNivel('dan1')">1º Dan</button>
-    <button onclick="seleccionarNivel('dan2')">2º Dan</button>
-    <button onclick="seleccionarNivel('dan3')">3º Dan</button>
-    <button onclick="seleccionarNivel('dan4')">4º Dan</button>
-    <button onclick="seleccionarNivel('dan5')">5º Dan</button>
-    <button onclick="seleccionarNivel('vocabulario')">📚 Vocabulario</button>
-    <button onclick="modoEstudiar()">📖 Estudiar</button>
-  </div>
+  <main id="principal">
+    <section id="niveles" aria-labelledby="tituloNiveles">
+      <h2 id="tituloNiveles">Selecciona el nivel</h2>
+      <div class="botonera">
+        <button type="button" data-nivel="dan1">1º Dan</button>
+        <button type="button" data-nivel="dan2">2º Dan</button>
+        <button type="button" data-nivel="dan3">3º Dan</button>
+        <button type="button" data-nivel="dan4">4º Dan</button>
+        <button type="button" data-nivel="dan5">5º Dan</button>
+        <button type="button" data-nivel="vocabulario">📚 Vocabulario</button>
+        <button type="button" id="btnEstudiar" class="secundario">📖 Estudiar</button>
+      </div>
 
-  <div id="contenido">
-    <div id="tecnicaNombre"></div>
-    <div id="tecnicaImagen"></div>
-    <button id="btnResolver" class="action-btn resolve" onclick="mostrarImagen()">Resolver</button>
-    <button class="action-btn" onclick="siguienteTecnica()">➡ Siguiente técnica</button>
-    <button class="action-btn" onclick="reiniciar()">🔁 Elegir otro nivel</button>
-  </div>
-  
-  <div id="modoEstudio" style="display:none; flex-direction: column;">
-    <h2>Técnicas y Vocabulario</h2>
-    <div id="tablaEstudio"></div>
-    <button class="action-btn" onclick="reiniciar()">🔁 Elegir otro nivel</button>
-  </div>
+      <div id="stats" class="panel" hidden>
+        <h3>Tu progreso</h3>
+        <ul id="statsLista" class="stats"></ul>
+        <button type="button" id="btnBorrar" class="enlace">Borrar progreso</button>
+      </div>
+    </section>
+
+    <section id="contenido" class="panel centro" aria-labelledby="nivelActual" hidden>
+      <h2 id="nivelActual"></h2>
+      <div class="progreso">
+        <progress id="progresoBarra" value="0" max="1" aria-label="Progreso de la sesión"></progress>
+        <span id="progresoTexto"></span>
+      </div>
+      <div id="tecnicaNombre" class="tecnica-nombre" aria-live="polite"></div>
+      <div id="cuentaAtras" class="cuenta" aria-hidden="true"></div>
+      <div id="tecnicaImagen" aria-live="polite"></div>
+      <div class="acciones">
+        <button type="button" id="btnResolver" class="ok">Resolver</button>
+      </div>
+      <div id="autoevaluacion" class="acciones" hidden>
+        <button type="button" id="btnSabia" class="ok">✅ La sabía</button>
+        <button type="button" id="btnNoSabia" class="mal">❌ No la sabía</button>
+      </div>
+      <div class="acciones">
+        <button type="button" id="btnSiguiente" hidden>➡ Saltar valoración</button>
+        <button type="button" class="secundario" data-volver>🔁 Elegir otro nivel</button>
+      </div>
+    </section>
+
+    <section id="resumen" class="panel centro" aria-labelledby="tituloResumen" hidden>
+      <h2 id="tituloResumen">🎉 ¡Nivel completado!</h2>
+      <p id="resumenTexto"></p>
+      <div class="acciones">
+        <button type="button" id="btnRepetir" class="ok">Repetir nivel</button>
+        <button type="button" class="secundario" data-volver>Elegir otro nivel</button>
+      </div>
+    </section>
+
+    <section id="modoEstudio" aria-labelledby="tituloEstudio" hidden>
+      <h2 id="tituloEstudio">Técnicas y vocabulario</h2>
+      <div class="barra-estudio">
+        <label for="buscador" class="sr">Buscar técnica o palabra</label>
+        <input id="buscador" type="search" placeholder="Buscar técnica o palabra…" autocomplete="off">
+        <button type="button" class="secundario" data-volver>🔁 Volver</button>
+      </div>
+      <div id="tablaEstudio"></div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://github.com/jordibd44/Taekwondo" target="_blank" rel="noopener">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="" width="20" height="20">
+      Ver en GitHub
+    </a>
+  </footer>
+
   <script src="script.js"></script>
+  <script src="app.js"></script>
 </body>
-<footer style="margin-top: 40px; text-align: center; color: white;">
-  <a href="https://github.com/jordibd44/Taekwondo" target="_blank" style="color: white; text-decoration: none;">
-  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="width: 24px; vertical-align: middle; margin-right: 8px;">
-  Ver en GitHub
-  </a>
-</footer>
 </html>

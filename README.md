@@ -1,8 +1,15 @@
-# Proyecto Taekwondo Open Source
+# Examen de Taekwondo
 
-Esta Web ha sido creado con el propósito de ayudar a la comunidad del Taekwondo, proporcionando información sobre técnicas y niveles Dan.
+Web para preparar el examen de cinturón negro (1º a 5º Dan): práctica de técnicas aleatorias, vocabulario coreano, modo estudio con buscador y seguimiento de progreso.
 
 Url: https://jordibd44.github.io/Taekwondo/
+
+## Funcionalidades
+
+- Práctica aleatoria por nivel con cuenta atrás y autoevaluación («La sabía» / «No la sabía»).
+- Progreso guardado en el dispositivo (localStorage), sin cuentas ni servidores.
+- Modo estudio con buscador, imágenes WebP y carga diferida.
+- Accesible (teclado, lectores de pantalla) y adaptado a móvil.
 
 ## Créditos
 
@@ -11,16 +18,6 @@ Url: https://jordibd44.github.io/Taekwondo/
 
 ## Licencia
 
-Este repositorio es público y **no tiene fines lucrativos**.
+El código se distribuye bajo CC BY-NC-SA 4.0 (ver [LICENSE](LICENSE)): uso **no comercial**, con reconocimiento y compartiendo igual.
 
-Puedes usar, modificar y compartir este código siempre que respetes las siguientes condiciones:
-
-1. Reconocimiento: Debes dar crédito apropiado, proporcionar un enlace al repositorio original y no indicar que tú eres el autor original.
-2. No Comercial: No puedes usar este proyecto ni sus derivados para fines comerciales.
-3. Compartir Igual: Si modificas o distribuyes este proyecto, debes hacerlo bajo la misma licencia.
-
-Para más detalles, consulta el archivo [LICENSE](LICENSE).
-
----
-
-¡Esperamos que este proyecto sea útil para la comunidad de Taekwondo!
+> Nota: antes de un uso comercial hay que cambiar la licencia del código y obtener permiso o sustituir los contenidos de terceros (imágenes y listado de técnicas).
